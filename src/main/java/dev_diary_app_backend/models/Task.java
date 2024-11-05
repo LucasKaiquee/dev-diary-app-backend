@@ -11,6 +11,7 @@ import lombok.Setter;
 @AllArgsConstructor
 @Document(collection = "tasks")
 public class Task {
+    private String id;
     private String userId;
     private String description;
     private String status;
