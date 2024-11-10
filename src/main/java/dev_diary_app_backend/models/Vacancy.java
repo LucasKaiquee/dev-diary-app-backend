@@ -9,11 +9,11 @@ import lombok.Setter;
 @Setter
 @Getter
 @AllArgsConstructor
-@Document(collection = "tasks")
-public class Task {
-    private String id;
-    private String userId;
-    private String description;
+@Document(collection = "vacancys")
+
+public class Vacancy {
+    private String name;
+    private String url;
+    private String company;
     private String status;
-    private boolean complete;
 }
