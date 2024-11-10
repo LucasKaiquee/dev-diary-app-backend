@@ -5,6 +5,7 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,16 +20,16 @@ import dev_diary_app_backend.services.TaskListService;
 
 @RestController //Indentifica que essa classe é um controlador que gerencia requisições HTTP.
 @RequestMapping("/tasks-list") // indentifica o endpoint em que a classe escuta.
-
+@CrossOrigin(origins = "*")
 public class TaskController {
 
     @Autowired
     private TaskListService TaskListService;
 
-    @GetMapping("{userId}") // -> identifica o método GET 
-    public ResponseEntity<List<Task>> getTask(@PathVariable String userId) {
-        List<Task> listTask = TaskListService.getAllTasks(userId);
-        return new ResponseEntity<>(listTask, HttpStatus.CREATED);
+    @GetMapping // -> identifica o método GET 
+    public ResponseEntity<List<Task>> getTask() {
+        List<Task> listTask = TaskListService.getAllTasks();
+        return new ResponseEntity<>(listTask, HttpStatus.OK);
     }
 
     @PostMapping
